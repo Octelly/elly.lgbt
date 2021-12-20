@@ -1,11 +1,15 @@
+/* SAME BASELINE */
 @import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+/* NERDFONT */
 @import url("https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css");
 
+/* VARIABLES */
 :root {
+	/* SONOKAI SHUSIA KITTY CONFIG STARTS HERE */
 	/* special */
 	--foreground: #e3e1e4;
 	--background: #2d2a2e;
-	--background: #2d2a2ee6; /* even more special */
+	--transparent-background: #2d2a2ee6; /* website specific addition */
 	--cursor: #e3e1e4;
 	--selection_foreground: #e3e1e4;
 	--selection_background: #78dce8;
@@ -42,20 +46,28 @@
 	--color7: #e3e1e4;
 	--color15: #e3e1e4;
 
+	/* SONOKAI SHUSIA KITTY CONFIG ENDS HERE */
+
 	/* site specific */
 	--terminal-padding: 5px;
 	--wm-gaps: 5px;
+	--topbar-height: 24px;
 }
 
+
+/* \/ CONSISTENT \/ */
 * {
 	font-family: "Fira Code", monospace !important;
-	font-size: 19px !important;
+	font-size: 20px !important;
 }
 *::selection {
 	background-color: var(--selection_background);
 	color: var(--selection_foreground);
 }
+/* /\ CONSISTENT /\ */
 
+
+/* \/ BACKGROUND \/ */
 html {
 	background-image: url("wallpaper.jpg");
 	background-size: cover;
@@ -67,9 +79,44 @@ html {
 	height: 100vh;
 	overflow: clip;
 }
+/* /\ BACKGROUND /\ */
 
-body {
-	background-color: var(--background);
+
+/* \/ TOPBAR \/ */
+nav {
+	background-color: var(--transparent-background);
+	backdrop-filter: blur(20px);
+	color: var(--foreground);
+
+	margin: var(--wm-gaps);
+	height: var(--topbar-height);
+	padding: 0px 2px;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+/* TOPBAR ELEMENTS */
+nav span {
+	font-size: 13px !important;
+}
+/* TASK LIST */
+nav .top-bar-tasklist-acive {
+	background-color: var(--color8);
+	padding: 1px;
+}
+/* CLOCK */
+nav span #clock {
+	order:99;
+}
+/* /\ TOPBAR /\ */
+
+
+/* \/ TERMINAL WINDOW \/ */
+.terminal {
+	background-color: var(--transparent-background);
 	backdrop-filter: blur(20px);
 	color: var(--foreground);
 
@@ -78,30 +125,37 @@ body {
 	margin: var(--wm-gaps);
 
 	width: calc(100vw - calc(calc(var(--wm-gaps) + var(--terminal-padding)) * 2));
-	height: calc(
-		100vh - calc(calc(var(--wm-gaps) + var(--terminal-padding)) * 2)
-	);
+	height: calc(100vh - calc(calc(var(--wm-gaps) + var(--terminal-padding)) * 2) - calc(var(--wm-gaps) + var(--topbar-height)));
 	overflow-y: scroll;
 	overflow-x: clip;
 
 	max-width: calc(80ch + calc(var(--terminal-padding) * 2));
 }
 
-body::-webkit-scrollbar {
+.terminal::-webkit-scrollbar {
 	width: var(--terminal-padding);
 }
 
-body::-webkit-scrollbar-track {
-}
-
-body::-webkit-scrollbar-thumb {
+.terminal::-webkit-scrollbar-thumb {
 	background: var(--color8);
 	border-radius: 0px;
 }
 
+/* /\ TERMINAL WINDOW /\ */
+
+
+/****************************************************
+G E N E R A L   S T Y L I N G   S T A R T S   H E R E
+****************************************************/
+
+/* PARAGRAPH */
+
 p {
 	margin-block: 1em;
 }
+
+
+/* LINKS */
 
 a {
 	color: var(--color9);
@@ -115,6 +169,14 @@ a::after {
 	content: "]";
 	color: var(--color8);
 }
+
+
+/* UNORDERED LIST
+
+- a
+- b
+- c
+*/
 
 ul {
 	/* https://stackoverflow.com/a/12216973/7933451 */
@@ -131,6 +193,14 @@ ul li::before {
 	padding-inline: 1ch;
 	color: var(--color8);
 }
+
+
+/* ORDERED LIST
+
+1. a
+2. b
+3. c
+*/
 
 ol {
 	/* https://css-tricks.com/style-list-markers-css/ */
@@ -152,6 +222,10 @@ li::before {
 	color: var(--color8);
 }
 
+
+/* HEADINGS */
+
+/* h1 */
 h1::before {
 	content: "#";
 	padding-inline-end: 1ch;
@@ -162,6 +236,7 @@ h1 {
 	color: var(--color11);
 }
 
+/* h2 */
 h2::before {
 	content: "##";
 	padding-inline-end: 1ch;
@@ -172,6 +247,7 @@ h2 {
 	color: var(--color11);
 }
 
+/* h3 */
 h3::before {
 	content: "###";
 	padding-inline-end: 1ch;
@@ -182,6 +258,7 @@ h3 {
 	color: var(--color11);
 }
 
+/* h4 */
 h4::before {
 	content: "####";
 	padding-inline-end: 1ch;
@@ -192,25 +269,79 @@ h4 {
 	color: var(--color11);
 }
 
-.warning {
+
+/**************************************************
+A D D I T I O N A L   S T Y L I N G   O P T I O N S
+**************************************************/
+
+/* BACKGROUND COLORS */
+
+/* color9 */
+
+.bg-color9 {
 	background-color: var(--color9);
 	color: var(--color0);
+}
+.bg-color9 a {
+	color: var(--color0);
+}
+.bg-color9 a::before {
+	color: var(--color0);
+}
+.bg-color9 a::after {
+	color: var(--color0);
+}
+.bg-color9 h1 {
+	color: var(--color0);
+}
+.bg-color9 h1::before {
+	color: var(--color0);
+}
+
+/* color14 */
+
+.bg-color14 {
+	background-color: var(--color14);
+	color: var(--color0);
+}
+.bg-color14 a {
+	color: var(--color0);
+}
+.bg-color14 a::before {
+	color: var(--color0);
+}
+.bg-color14 a::after {
+	color: var(--color0);
+}
+.bg-color14 h1 {
+	color: var(--color0);
+}
+.bg-color14 h1::before {
+	color: var(--color0);
+}
+
+
+/* MARGINS */
+
+/* 1 character */
+
+.margin-1char {
 	margin: 1em 1ch;
 }
-.warning a {
-	color: var(--color0);
+
+
+/* SPECIAL BOX MARKERS */
+
+/* [i] information */
+
+.information h1::before {
+	content: "[i]";
+	padding-inline-end: 1ch;
 }
-.warning a::before {
-	color: var(--color0);
-}
-.warning a::after {
-	color: var(--color0);
-}
-.warning h1 {
-	color: var(--color0);
-}
+
+/* /!\ warning */
+
 .warning h1::before {
-	color: var(--color0);
 	content: "/!\\";
 	padding-inline-end: 1ch;
 }
