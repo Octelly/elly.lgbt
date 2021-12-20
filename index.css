@@ -1,0 +1,207 @@
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+@import url("https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css");
+
+:root {
+	/* special */
+	--foreground: #e3e1e4;
+	--background: #2d2a2e;
+	--background: #2d2a2ee6; /* even more special */
+	--cursor: #e3e1e4;
+	--selection_foreground: #e3e1e4;
+	--selection_background: #78dce8;
+
+	/* black */
+	--color0: #1a181a;
+	--color8: #49464e;
+
+	/* red */
+	--color1: #f85e84;
+	--color9: #f85e84;
+
+	/* green */
+	--color2: #9ecd6f;
+	--color10: #9ecd6f;
+
+	/* yellow */
+	--color3: #e5c463;
+	--color11: #e5c463;
+
+	/* blue */
+	--color4: #7accd7;
+	--color12: #7accd7;
+
+	/* magenta */
+	--color5: #ab9df2;
+	--color13: #ab9df2;
+
+	/* cyan */
+	--color6: #78dce8;
+	--color14: #78dce8;
+
+	/* white */
+	--color7: #e3e1e4;
+	--color15: #e3e1e4;
+
+	/* site specific */
+	--terminal-padding: 5px;
+	--wm-gaps: 5px;
+}
+
+* {
+	font-family: "Fira Code", monospace !important;
+	font-size: 19px !important;
+}
+*::selection {
+	background-color: var(--selection_background);
+	color: var(--selection_foreground);
+}
+
+html {
+	background-image: url("wallpaper.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+
+	width: 100vw;
+	height: 100vh;
+	overflow: clip;
+}
+
+body {
+	background-color: var(--background);
+	backdrop-filter: blur(20px);
+	color: var(--foreground);
+
+	padding: var(--terminal-padding);
+	padding-right: 0px;
+	margin: var(--wm-gaps);
+
+	width: calc(100vw - calc(calc(var(--wm-gaps) + var(--terminal-padding)) * 2));
+	height: calc(
+		100vh - calc(calc(var(--wm-gaps) + var(--terminal-padding)) * 2)
+	);
+	overflow-y: scroll;
+
+	max-width: calc(80ch + calc(var(--terminal-padding) * 2));
+}
+
+body::-webkit-scrollbar {
+	width: var(--terminal-padding);
+}
+
+body::-webkit-scrollbar-track {
+}
+
+body::-webkit-scrollbar-thumb {
+	background: var(--color8);
+	border-radius: 0px;
+}
+
+p {
+	margin-block: 1em;
+}
+
+a {
+	color: var(--color9);
+	text-decoration: none;
+}
+a::before {
+	content: "[";
+	color: var(--color8);
+}
+a::after {
+	content: "]";
+	color: var(--color8);
+}
+
+ul {
+	/* https://stackoverflow.com/a/12216973/7933451 */
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+ul li {
+	padding-left: 1em;
+	text-indent: -1em;
+}
+ul li::before {
+	content: "-";
+	padding-inline: 1ch;
+	color: var(--color8);
+}
+
+ol {
+	/* https://css-tricks.com/style-list-markers-css/ */
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+	counter-reset: ol-li-counter;
+}
+ol li {
+	counter-increment: ol-li-counter;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+li::before {
+	content: counter(ol-li-counter) ".";
+	text-align: right;
+	display: inlin;
+	padding-inline: 1ch;
+	color: var(--color8);
+}
+
+h1::before {
+	content: "#";
+	padding-inline-end: 1ch;
+	color: var(--color8);
+}
+h1 {
+	margin: 0;
+	color: var(--color11);
+}
+
+h2::before {
+	content: "##";
+	padding-inline-end: 1ch;
+	color: var(--color8);
+}
+h2 {
+	margin: 0;
+	color: var(--color11);
+}
+
+h3::before {
+	content: "###";
+	padding-inline-end: 1ch;
+	color: var(--color8);
+}
+h3 {
+	margin: 0;
+	color: var(--color11);
+}
+
+h4::before {
+	content: "####";
+	padding-inline-end: 1ch;
+	color: var(--color8);
+}
+h4 {
+	margin: 0;
+	color: var(--color11);
+}
+
+.warning {
+	background-color: var(--color9);
+	color: var(--color0);
+	margin: 1em 1ch;
+}
+.warning a {
+	color: var(--color0);
+}
+.warning a::before {
+	color: var(--color0);
+}
+.warning a::after {
+	color: var(--color0);
+}
