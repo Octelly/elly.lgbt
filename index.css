@@ -206,3 +206,11 @@ h4 {
 .warning a::after {
 	color: var(--color0);
 }
+.warning h1 {
+	color: var(--color0);
+}
+.warning h1::before {
+	color: var(--color0);
+	content: "/!\\";
+	padding-inline-end: 1ch;
+}
