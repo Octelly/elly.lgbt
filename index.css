@@ -82,6 +82,7 @@ body {
 		100vh - calc(calc(var(--wm-gaps) + var(--terminal-padding)) * 2)
 	);
 	overflow-y: scroll;
+	overflow-x: clip;
 
 	max-width: calc(80ch + calc(var(--terminal-padding) * 2));
 }
